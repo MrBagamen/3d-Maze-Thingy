@@ -7,14 +7,10 @@ class Wall : public Texture
 {
 public:
     Wall(GLfloat _x, GLfloat _y, GLfloat _z,GLfloat _sizey,GLfloat _sizez);
-
-    void Draw();
+    void Draw(GLfloat angle);
 private:
     GLfloat x, y, z, psizey, psizez;
-    GLfloat texcoord[8] = { 0.0f, 0.0f,
-                            1.0f, 0.0f,
-                            1.0f, 1.0f,
-                            0.0f, 1.0f};
+
     GLfloat wall[12];
 };
 

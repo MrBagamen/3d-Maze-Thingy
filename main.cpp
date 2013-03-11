@@ -28,8 +28,8 @@ int main (int argc, char** argv)
     floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 45.0f, 45.0f);
 
     //Test/Wall
-    Wall w(0.0f, 0.0f, 0.0f, 20.0f, 50.0f);
-    w.LoadTexture("res/wall.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 20.0f, 20.0f);
+    Wall w(-10.0f, 0.0f, -30.0f, 20.0f, 50.0f);
+    w.LoadTexture("res/wall.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 5.0f, 2.0f);
 
     bool is_running = true;
     int framesRendered = 0;
@@ -75,9 +75,9 @@ int main (int argc, char** argv)
         }
         cam.setView();
 
-
         floor.Draw();
-        w.Draw();
+        w.Draw(90);
+
 
         SDL_GL_SwapBuffers();
         ++framesRendered;
