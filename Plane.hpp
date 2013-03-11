@@ -11,10 +11,7 @@ public:
     void Draw();
 private:
     GLfloat x, y, z, psize;
-    GLfloat texcoord[8] = {  0.0f, 0.0f,
-                            45.0f, 0.0f,
-                            45.0f, 45.0f,
-                            0.0f, 45.0f};
+
     GLfloat plane[12];
 };
 

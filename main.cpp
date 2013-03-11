@@ -1,4 +1,5 @@
 #include "Plane.hpp"
+#include "Wall.hpp"
 #include "Camera.hpp"
 #include "Clock.hpp"
 #include "Config.hpp"
@@ -24,7 +25,11 @@ int main (int argc, char** argv)
 
     //Plane/Floor
     Plane floor(0.0f, 0.0f, 0.0f, 500);
-    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"));
+    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 45.0f, 45.0f);
+
+    //Test/Wall
+    Wall w(0.0f, 0.0f, 0.0f, 20.0f, 50.0f);
+    w.LoadTexture("res/wall.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 20.0f, 20.0f);
 
     bool is_running = true;
     int framesRendered = 0;
@@ -72,6 +77,7 @@ int main (int argc, char** argv)
 
 
         floor.Draw();
+        w.Draw();
 
         SDL_GL_SwapBuffers();
         ++framesRendered;

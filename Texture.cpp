@@ -47,3 +47,12 @@ void Texture::LoadTexture(const char* fileName, bool anisotropicFiltering, GLflo
         glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
     }
 }
+
+void Texture::LoadTexture(const char* fileName, bool anisotropicFiltering, GLfloat afLevel, GLfloat tx, GLfloat ty)
+{
+    texcoord[0] = 0.0f;texcoord[1] = 0.0f;
+    texcoord[2] = tx;texcoord[3] = 0.0f;
+    texcoord[4] = tx;texcoord[5] = ty;
+    texcoord[6] = 0.0f;texcoord[7] = ty;
+    LoadTexture(fileName, anisotropicFiltering, afLevel);
+}
