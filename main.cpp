@@ -141,6 +141,15 @@ void InitGL()
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
 
+    //Fog
+    GLfloat density = 0.05; //set the density to 0.3 which is acctually quite thick
+    GLfloat fogColor[4] = {0.8, 0.8, 0.8, 1.0}; //set the for color to grey
+
+    glEnable(GL_FOG);
+    glFogi(GL_FOG_MODE, GL_EXP);
+    glFogfv(GL_FOG_COLOR, fogColor);
+    glFogf(GL_FOG_DENSITY, density);
+
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClearDepth(1.0f);
     glDepthFunc(GL_LEQUAL);
