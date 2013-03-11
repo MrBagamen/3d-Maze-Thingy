@@ -2,6 +2,7 @@ maze.conf
 
 # Code::Blocks
 *.depend
+*.layout
 *.cbp
 bin/
 obj/
