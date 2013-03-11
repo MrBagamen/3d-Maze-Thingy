@@ -6,10 +6,10 @@
 class Wall : public Texture
 {
 public:
-    GLfloat x, y, z, psizey, psizez;
+    GLfloat x, y, z, psizex,psizey, psizez;
 
-    Wall(GLfloat _x, GLfloat _y, GLfloat _z,GLfloat _sizey,GLfloat _sizez);
-    void Draw(GLfloat angle);
+    Wall(GLfloat _x, GLfloat _y, GLfloat _z,GLfloat _sizex, GLfloat _sizey,GLfloat _sizez);
+    void Draw();
 
 private:
     GLfloat wall[12];

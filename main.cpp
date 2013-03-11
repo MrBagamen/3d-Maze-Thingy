@@ -26,10 +26,11 @@ int main (int argc, char** argv)
 
     //Plane/Floor
     Plane floor(0.0f, 0.0f, 0.0f, 500);
-    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 45.0f, 45.0f);
+    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 50.0f, 50.0f);
 
     //Test/Wall
-    Wall w(-10.0f, 0.0f, -30.0f, 20.0f, 50.0f);
+    //Wall w(-10.0f, 0.0f, -30.0f, 50.0f,20.0f, 0.0f);
+    Wall w(-10.0f, 0.0f, -30.0f, 0.0f,20.0f, 50.0f);
     w.LoadTexture("res/wall.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 5.0f, 2.0f);
 
     //Test collision
@@ -77,15 +78,15 @@ int main (int argc, char** argv)
         {
             cam.moveLoc(0.0f, 0.0f, 1.0f,-0.5f);
         }
-
         if(c.IsCollision(cam.Position[0], cam.Position[2], &w))
         {
             cam.moveLoc(0.0f, 0.0f, 1.0f,-0.5f);
         }
+        printf("X: %f, Z: %f\n", cam.Position[0], cam.Position[2]);
         cam.setView();
 
         floor.Draw();
-        w.Draw(0);
+        w.Draw();
 
 
         SDL_GL_SwapBuffers();
