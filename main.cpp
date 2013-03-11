@@ -4,6 +4,9 @@
 #include "Clock.hpp"
 #include "Config.hpp"
 #include "Collision.hpp"
+#include <vector>
+
+using namespace std;
 
 bool keys[317] = {false};
 
@@ -29,9 +32,10 @@ int main (int argc, char** argv)
     floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 50.0f, 50.0f);
 
     //Test/Wall
-    Wall w(-10.0f, 0.0f, -30.0f, 50.0f,20.0f, 0.0f);
-    //Wall w(-10.0f, 0.0f, -30.0f, 0.0f,20.0f, 50.0f);
+    Wall w(-10.0f, 0.0f, -30.0f, 0.0f, 20.0f, 50.0f);
+    Wall w2(15.0f, 0.0f, -30.0f, 50.0f, 20.0f, 0.0f);
     w.LoadTexture("res/wall.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 5.0f, 2.0f);
+    w2.LoadTexture(w.tex, conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 5.0f, 2.0f);
 
     //Test collision
     Collision c;
@@ -78,7 +82,7 @@ int main (int argc, char** argv)
         {
             cam.moveLoc(0.0f, 0.0f, 1.0f,-0.5f);
         }
-        if(c.IsCollision(cam.Position[0], cam.Position[2], &w, false))
+        if(c.IsCollision(cam.Position[0], cam.Position[2], &w, true) || c.IsCollision(cam.Position[0], cam.Position[2], &w2, false))
         {
             if(keys[SDLK_w])
             {
@@ -90,11 +94,12 @@ int main (int argc, char** argv)
                 cam.moveLoc(0.0f, 0.0f, 1.0f, 0.5f);
             }
         }
-        printf("X: %f, Z: %f\n", cam.Position[0], cam.Position[2]);
+        //printf("X: %f, Z: %f\n", cam.Position[0], cam.Position[2]);
         cam.setView();
 
         floor.Draw();
         w.Draw();
+        w2.Draw();
 
 
         SDL_GL_SwapBuffers();
