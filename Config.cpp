@@ -6,6 +6,7 @@
 Config::Config()
 {
     map["anisotropic"] = "true";
+    map["afLevel"] = "4";
 }
 
 bool Config::LoadFromFile(const std::string& filename)
@@ -49,7 +50,7 @@ bool Config::GetBool(const std::string& key)
     return map[key] == "true";
 }
 
-bool Config::GetFloat(const std::string & key)
+float Config::GetFloat(const std::string & key)
 {
-    return map[key] == "true";
+    return std::stof(map[key]);
 }

@@ -11,7 +11,7 @@ public:
     bool LoadFromFile(const std::string& filename);
     bool SaveToFile(const std::string& filename);
     bool GetBool(const std::string& key);
-    bool GetFloat(const std::string & key);
+    float GetFloat(const std::string & key);
 private:
     std::map<std::string, std::string> map;
 };
