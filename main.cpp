@@ -1,5 +1,6 @@
 #include "Plane.hpp"
 #include "Camera.hpp"
+#include "Clock.hpp"
 
 bool keys[317] = {false};
 
@@ -18,6 +19,9 @@ int main (int argc, char** argv)
     floor.LoadTexture("res/floor.png", true, 16);
 
     bool is_running = true;
+    int framesRendered = 0;
+    Clock clock;
+
     while(is_running)
     {
         while(SDL_PollEvent(&event))
@@ -62,6 +66,16 @@ int main (int argc, char** argv)
         floor.Draw();
 
         SDL_GL_SwapBuffers();
+        ++framesRendered;
+
+        if (clock.Ticks() >= 1000)
+        {
+            static char buf[30];
+            sprintf(buf, "%d fps", framesRendered);
+            SDL_WM_SetCaption(buf, nullptr);
+            framesRendered = 0;
+            clock.Restart();
+        }
     }
 
     SDL_Quit();
