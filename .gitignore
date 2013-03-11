@@ -1,4 +1,10 @@
+maze.conf
+
+# Code::Blocks
 *.depend
 *.cbp
 bin/
 obj/
+
+# Qt Creator
+CMakeLists.txt.user
