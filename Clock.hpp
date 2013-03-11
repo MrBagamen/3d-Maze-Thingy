@@ -1,7 +1,7 @@
 #ifndef CLOCK_HPP
 #define CLOCK_HPP
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 class Clock
 {

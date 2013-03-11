@@ -24,7 +24,7 @@ int main (int argc, char** argv)
 
     //Plane/Floor
     Plane floor(0.0f, 0.0f, 0.0f, 500);
-    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), 16);
+    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"));
 
     bool is_running = true;
     int framesRendered = 0;

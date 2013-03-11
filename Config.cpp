@@ -48,3 +48,8 @@ bool Config::GetBool(const std::string& key)
 {
     return map[key] == "true";
 }
+
+bool Config::GetFloat(const std::string & key)
+{
+    return map[key] == "true";
+}
