@@ -7,7 +7,7 @@ class Collision
 {
     public:
         Collision();
-        bool IsCollision(GLfloat x, GLfloat z, Wall *w);
+        bool IsCollision(GLfloat x, GLfloat z, Wall *w, bool vert);
     private:
 };
 
