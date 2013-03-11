@@ -13,6 +13,8 @@ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX OR "${CMAKE_CXX_COMPIL
 endif ()
 
 add_executable(maze
+Config.hpp
+Config.cpp
 Clock.hpp
 .gitignore
 Camera.cpp

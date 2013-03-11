@@ -1,12 +1,20 @@
 #include "Plane.hpp"
 #include "Camera.hpp"
 #include "Clock.hpp"
+#include "Config.hpp"
 
 bool keys[317] = {false};
 
 void InitGL();
 int main (int argc, char** argv)
 {
+    Config conf;
+
+    if (!conf.LoadFromFile("maze.conf"))
+    {
+        puts("Could not find maze.conf. Using default configuration.");
+    }
+
     SDL_SetVideoMode(1024, 768, 32, SDL_HWSURFACE | SDL_OPENGL);
     SDL_Event event;
     InitGL();
@@ -16,7 +24,7 @@ int main (int argc, char** argv)
 
     //Plane/Floor
     Plane floor(0.0f, 0.0f, 0.0f, 500);
-    floor.LoadTexture("res/floor.png", true, 16);
+    floor.LoadTexture("res/floor.png", conf.GetBool("anisotropic"), 16);
 
     bool is_running = true;
     int framesRendered = 0;
@@ -79,6 +87,12 @@ int main (int argc, char** argv)
     }
 
     SDL_Quit();
+
+    if (!conf.SaveToFile("maze.conf"))
+    {
+        puts("Warning: Failed to save maze.conf.");
+    }
+
     return 0;
 }
 
