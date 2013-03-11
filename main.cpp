@@ -3,6 +3,7 @@
 #include "Camera.hpp"
 #include "Clock.hpp"
 #include "Config.hpp"
+#include "Collision.hpp"
 
 bool keys[317] = {false};
 
@@ -30,6 +31,9 @@ int main (int argc, char** argv)
     //Test/Wall
     Wall w(-10.0f, 0.0f, -30.0f, 20.0f, 50.0f);
     w.LoadTexture("res/wall.png", conf.GetBool("anisotropic"), conf.GetFloat("afLevel"), 5.0f, 2.0f);
+
+    //Test collision
+    Collision c;
 
     bool is_running = true;
     int framesRendered = 0;
@@ -73,10 +77,15 @@ int main (int argc, char** argv)
         {
             cam.moveLoc(0.0f, 0.0f, 1.0f,-0.5f);
         }
+
+        if(c.IsCollision(cam.Position[0], cam.Position[2], &w))
+        {
+            cam.moveLoc(0.0f, 0.0f, 1.0f,-0.5f);
+        }
         cam.setView();
 
         floor.Draw();
-        w.Draw(90);
+        w.Draw(0);
 
 
         SDL_GL_SwapBuffers();

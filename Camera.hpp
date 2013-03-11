@@ -36,7 +36,9 @@ public:
 	float const *Right, *Up, *Forward;
 	float *Position;
 private:
-	float Transform[16];
+    float Transform[16];
+
+private:
 
 public:
 	Camera(float x=0.0f, float y=0.0f, float z=0.0f);
