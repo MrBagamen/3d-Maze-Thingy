@@ -11,6 +11,7 @@ public:
     void Draw();
 private:
     GLfloat x, y, z, psize;
+    GLubyte indices[6] = {0, 1, 2, 2, 3, 0};
 
     GLfloat plane[12];
 };

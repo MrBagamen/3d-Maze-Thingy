@@ -5,6 +5,7 @@
 #include "Config.hpp"
 #include "Collision.hpp"
 #include <vector>
+#include <GL/glew.h>
 
 using namespace std;
 

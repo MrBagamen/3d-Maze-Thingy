@@ -13,6 +13,7 @@ public:
 
 private:
     GLfloat wall[12];
+    GLubyte indices[6] = {0, 1, 2, 2, 3, 0};
 };
 
 #endif // WALL_HPP

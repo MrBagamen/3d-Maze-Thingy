@@ -20,6 +20,7 @@ void Plane::Draw()
     glTranslatef(x, y, z);
     glVertexPointer(3, GL_FLOAT, 0, plane);
     glTexCoordPointer(2, GL_FLOAT, 0, texcoord);
-    glDrawArrays(GL_QUADS, 0, 4);
+    //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
     glPopMatrix();
 }
