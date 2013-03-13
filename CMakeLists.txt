@@ -15,18 +15,23 @@ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX OR "${CMAKE_CXX_COMPIL
 endif ()
 
 add_executable(maze
-Config.hpp
-Config.cpp
-Clock.hpp
 .gitignore
 Camera.cpp
 Camera.hpp
+Clock.hpp
+Collision.cpp
+Collision.hpp
+Config.cpp
+Config.hpp
 Plane.cpp
 Plane.hpp
 Texture.cpp
 Texture.hpp
+Wall.cpp
+Wall.hpp
 main.cpp
 res/floor.png
+res/wall.png
 )
 
 target_link_libraries(maze ${SDL_LIBRARY} ${OPENGL_LIBRARY} ${SDLIMAGE_LIBRARY} ${GLEW_LIBRARY})
