@@ -1,6 +1,7 @@
 #include "Wall.hpp"
 
-Wall::Wall(GLfloat _x, GLfloat _y, GLfloat _z,GLfloat _sizex, GLfloat _sizey,GLfloat _sizez)
+Wall::Wall(const Texture& texture, GLfloat _x, GLfloat _y, GLfloat _z,GLfloat _sizex, GLfloat _sizey,GLfloat _sizez) :
+    texture(texture)
 {
     x = _x;
     y = _y;
@@ -18,10 +19,10 @@ Wall::Wall(GLfloat _x, GLfloat _y, GLfloat _z,GLfloat _sizex, GLfloat _sizey,GLf
 void Wall::Draw()
 {
     glPushMatrix();
-    glBindTexture(GL_TEXTURE_2D, tex);
+    glBindTexture(GL_TEXTURE_2D, texture.tex);
     glTranslatef(x, y, z);
     glVertexPointer(3, GL_FLOAT, 0, wall);
-    glTexCoordPointer(2, GL_FLOAT, 0, texcoord);
+    glTexCoordPointer(2, GL_FLOAT, 0, texture.texcoord);
     //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, indices);
     glPopMatrix();
